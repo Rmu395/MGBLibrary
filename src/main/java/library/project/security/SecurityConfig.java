@@ -30,17 +30,15 @@ public class SecurityConfig {
     ) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())               //w rest api – brak sesji i ciasteczek, wyłączamy ochronę //Cross-Site Request Forgery
-                .authorizeHttpRequests(auth -> auth //TODO: to change
-//                                .requestMatchers("/api/auth/admin/**").hasRole("ADMIN")
-//                                .requestMatchers("/api/payments/checkout").hasRole("USER")
-//                                .requestMatchers("/api/auth/**").permitAll()
-//                                .requestMatchers("/api/payments/**").permitAll()
-//                                .requestMatchers("/api/**").hasRole("USER")
-//                                .requestMatchers(HttpMethod.POST,"/api/vehicles").hasRole("ADMIN")
-//                                .requestMatchers(HttpMethod.GET,"/api/vehicles/available").hasRole("USER")
-//                                .requestMatchers(HttpMethod.GET,"/api/vehicles").hasRole("ADMIN")
-//                        .requestMatchers("api/admin/**").hasRole("ADMIN")
-                                .anyRequest().authenticated() //każdy inny request wymaga zalogowania
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/project/auth/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/project/auth/**").permitAll()
+                        .requestMatchers("/project/books/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/project/books/**").hasRole("USER")
+                        .requestMatchers("/project/games/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/project/games/**").hasRole("USER")
+                        .requestMatchers("/project/**").hasRole("USER")
+                        .anyRequest().authenticated() //każdy inny request wymaga zalogowania
                 )
                 //Brak sesji, rest api z tokenami jwt!
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

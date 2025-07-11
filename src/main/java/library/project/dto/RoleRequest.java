@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginRequest {
+public class RoleRequest {
+    private String name;
     private String login;
-    private String password;
 
     /*
     {
-        "login": "",
-        "password": ""
+        "name": "",
+        "login": ""
     }
     */
 }

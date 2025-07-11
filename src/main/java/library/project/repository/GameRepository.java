@@ -9,4 +9,5 @@ import java.util.List;
 public interface GameRepository extends JpaRepository<Game, String> {
     // Methods findAll(), findById(), save(), deleteById() fromJpaRepository.
     List<Game> findByVisibleTrue();
+    List<Game> findByVisibleFalse();
 }

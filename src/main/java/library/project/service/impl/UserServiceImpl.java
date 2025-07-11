@@ -42,28 +42,13 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() ->
                         new IllegalStateException("There is no role... ROLE_USER"));
 
-        if (req.isAdmin()) {
-            Role userRoleAdmin = roleRepository.findByName("ROLE_ADMIN")
-                    .orElseThrow(() ->
-                            new IllegalStateException("There is no role... ROLE_ADMIN"));
-
-            User u = User.builder()
-                    .id(UUID.randomUUID().toString())
-                    .login(req.getLogin())
-                    .password(passwordEncoder.encode(req.getPassword()))
-                    .roles(Set.of(userRoleAdmin, userRole))
-                    .build();
-            userRepository.save(u);
-        }
-        else {
-            User u = User.builder()
-                    .id(UUID.randomUUID().toString())
-                    .login(req.getLogin())
-                    .password(passwordEncoder.encode(req.getPassword()))
-                    .roles(Set.of(userRole))
-                    .build();
-            userRepository.save(u);
-        }
+        User u = User.builder()
+                .id(UUID.randomUUID().toString())
+                .login(req.getLogin())
+                .password(passwordEncoder.encode(req.getPassword()))
+                .roles(Set.of(userRole))
+                .build();
+        userRepository.save(u);
     }
 
     @Override

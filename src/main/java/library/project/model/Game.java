@@ -30,7 +30,7 @@ public class Game {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "platforms",
+            name = "game_platforms",
             joinColumns = @JoinColumn(name = "game_id"),
             inverseJoinColumns = @JoinColumn(name = "platform_id")
     )

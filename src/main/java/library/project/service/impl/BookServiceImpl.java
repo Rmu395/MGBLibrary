@@ -1,6 +1,7 @@
 package library.project.service.impl;
 
 import library.project.model.Book;
+import library.project.repository.BookRepository;
 import library.project.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,32 +9,43 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-//TODO: WELL TO DO EVERYTHING
 @Service
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
+    private final BookRepository bookRepository;
+
     @Override
     public List<Book> findAll() {
-        return List.of();
+        return bookRepository.findAll();
     }
 
     @Override
     public List<Book> findAllVisible() {
-        return List.of();
+        return bookRepository.findByVisibleTrue();
+    }
+
+    @Override
+    public List<Book> findAllInvisible() {
+        return bookRepository.findByVisibleFalse();
     }
 
     @Override
     public Optional<Book> findById(String id) {
-        return Optional.empty();
+        return bookRepository.findById(id);
     }
 
     @Override
     public Book save(Book book) {
-        return null;
+        return bookRepository.save(book);
     }
 
     @Override
     public Optional<Book> deleteById(String id) {
-        return Optional.empty();
+        Optional<Book> book = bookRepository.findById(id);
+        if (book.isPresent()) {
+            book.get().setVisible(false);
+            return book;
+        }
+        else return Optional.empty();
     }
 }

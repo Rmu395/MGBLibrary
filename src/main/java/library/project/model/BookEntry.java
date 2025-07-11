@@ -33,4 +33,7 @@ public class BookEntry {
 
     @Column(name = "review")
     private String review;
+
+    @Column(name = "visible")
+    private boolean visible;
 }

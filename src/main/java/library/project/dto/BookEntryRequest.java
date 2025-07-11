@@ -12,4 +12,13 @@ public class BookEntryRequest {
     private int progress;
     private String rating;
     private String review;
+
+    /*
+    {
+        "bookId": "",
+        "progress": ,
+        "rating": "",
+        "review": ""
+    }
+    */
 }

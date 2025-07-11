@@ -12,4 +12,13 @@ public class GameEntryRequest {
     private int hours;
     private String rating;
     private String review;
+
+    /*
+    {
+        "gameId": "",
+        "hours": ,
+        "rating": "",
+        "review": ""
+    }
+    */
 }

@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface GameEntryRepository extends JpaRepository<GameEntry, String> {
     // Methods findAll(), findById(), save(), deleteById() fromJpaRepository.
     Optional<GameEntry> findByGameId(String gameId);    //TODO: check if visible in use case
-    Optional<GameEntry> findByUserId(String userId);
+    List<GameEntry> findByUserId(String userId);
+    List<GameEntry> findByUserIdAndVisibleTrue(String userId);
 }

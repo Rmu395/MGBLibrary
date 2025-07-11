@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface BookEntryRepository extends JpaRepository<BookEntry, String> {
     // Methods findAll(), findById(), save(), deleteById() fromJpaRepository.
     Optional<BookEntry> findByBookId(String bookId);    //TODO: check if visible in use case
-    Optional<BookEntry> findByUserId(String userId);
+    List<BookEntry> findByUserId(String userId);
+    List<BookEntry> findByUserIdAndVisibleTrue(String userId);
 }

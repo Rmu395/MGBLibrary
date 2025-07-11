@@ -8,10 +8,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewBookRequest {
-    // ONLY ADMIN
+    private String id;  // this will only be used for editing already existing book or deleting one
     private String title;
     private String author;
     private String pubYear;
     private String publisher;
-    private String pages;
+    private int pages;
+
+    /*
+    {
+        "id": "",
+        "title": "",
+        "author": "",
+        "pubYear": "",
+        "publisher": "",
+        "pages":
+    }
+    */
 }

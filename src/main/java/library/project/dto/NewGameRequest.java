@@ -8,9 +8,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewGameRequest {
-    // ONLY ADMIN
+    private String id;
     private String title;
     private String developer;
     private String publisher;
-    //TODO: adding platforms
+
+    /*
+    {
+        "id": "",
+        "title": "",
+        "developer": "",
+        "publisher": ""
+    }
+    */
 }

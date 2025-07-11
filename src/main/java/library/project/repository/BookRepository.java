@@ -8,4 +8,5 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, String> {
     // Methods findAll(), findById(), save(), deleteById() fromJpaRepository.
     List<Book> findByVisibleTrue();
+    List<Book> findByVisibleFalse();
 }
